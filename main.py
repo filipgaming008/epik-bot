@@ -1,5 +1,6 @@
 #imported stuff from discord, very useful for bot to work
 import discord, os
+from discord import message
 from discord.ext import commands
 
 #this took 3 hours to do
@@ -15,10 +16,6 @@ async def on_ready():
     print("Im ready!")
 
 @client.event
-async def on_message(message):
-    print("A message has been sent!")
-
-@client.event
 async def on_member_join(member):
   print(f"{member} has joined a server.")
 
@@ -28,8 +25,11 @@ async def on_member_remove(member):
 
 #commands
 @client.command()
-async def hello(cfx):
-  print("hi")
-  await cfx.message.channel.send("Hello!")
+async def hello(ctx):
+  await ctx.send("Hello!")
+
+@client.command()
+async def ping(ctx):
+  await ctx.send(f"Pong! {round(client.latency, 3)* 100}ms")
 
 client.run(os.getenv("TOKEN"))
