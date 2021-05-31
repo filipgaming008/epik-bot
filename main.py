@@ -2,6 +2,7 @@
 import discord, os
 from discord import message
 from discord.ext import commands
+from webserver import keep_aliveO
 
 #this took 3 hours to do
 bruh = discord.Intents.default()
@@ -39,5 +40,6 @@ async def ping(ctx):
 @client.command()
 async def help(ctx):
   await ctx.send("\nAvalable commands: \n!help \n!ping \n!hello \n")
-
+  
+keep_aliveO()
 client.run(os.getenv("TOKEN"))
