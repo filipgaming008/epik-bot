@@ -1,7 +1,6 @@
 from flask import Flask 
 from threading import Thread
-from flask import request
-from flask import jsonify
+
 
 app = Flask('') 
 
