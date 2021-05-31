@@ -8,7 +8,11 @@ bruh = discord.Intents.default()
 bruh.members = True
 
 #and so did this
-client = commands.Bot(command_prefix = "!", intents = bruh)
+client = commands.Bot(
+  command_prefix = "!",
+  intents = bruh,
+  help_command=None
+  )
 
 #events
 @client.event
@@ -31,5 +35,9 @@ async def hello(ctx):
 @client.command()
 async def ping(ctx):
   await ctx.send(f"Pong! {round(client.latency, 3)* 100}ms")
+
+@client.command()
+async def help(ctx):
+  await ctx.send("\nAvalable commands: \n!help \n!ping \n!hello \n")
 
 client.run(os.getenv("TOKEN"))
