@@ -78,6 +78,11 @@ async def say(ctx, *, text):
     await message.delete()
     await ctx.send(f"{text}")
 
+@client.command()
+async def restart(ctx):
+    await ctx.send("Restarting!")
+    SystemExit()
+
 # purge command
 @client.command(pass_context=True)
 @has_permissions(administrator=True)
