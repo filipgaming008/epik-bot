@@ -25,7 +25,7 @@ async def on_ready():
     await client.change_presence(
         status=Status.online, 
         activity=Game(
-            "Prefix !"
+            "!help"
             )
         )
 
