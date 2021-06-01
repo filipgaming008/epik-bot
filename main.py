@@ -3,6 +3,7 @@ import discord
 import os
 from discord import Embed
 from discord.ext import commands
+from discord.ext.commands import has_permissions
 from webserver import keep_alive
 
 # this took 3 hours to do
@@ -53,19 +54,35 @@ async def on_member_remove(member):
 
 # commands
 
+# hello command
 @client.command()
 async def hello(ctx):
     await ctx.send("Hello!")
 
+# ping command
 @client.command()
 async def ping(ctx):
     await ctx.send(f"Pong! {round(client.latency, 3)* 100}ms")
 
+# say command
 @client.command()
 async def say(ctx, *, text):
     message = ctx.message
     await message.delete()
     await ctx.send(f"{text}")
+
+# purge command
+@client.command(pass_context=True)
+@has_permissions(administrator=True)
+async def purge(ctx, amount=0):
+    await ctx.channel.purge(limit=amount + 1)
+    await ctx.send(f"{amount} messages have been deleted successfully!")
+
+# purge error handle
+@purge.error
+async def purge_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You cant do that!")
 
 # help command
 @client.command()
@@ -77,10 +94,11 @@ async def help(ctx):
         )
     embed.add_field(
         name="\nBasic commands:\n",
-        value=("!help - brings up this menu \n" 
-        "!ping - pings the bot" 
-        "\n!hello - say hi to the bot\n" 
-        "!say - make the bot say something"),
+        value=("!help - brings up this menu" 
+        "\n!ping - pings the bot" 
+        "\n!hello - say hi to the bot" 
+        "\n!say - make the bot say something" 
+        "\n!purge - purge a said amount of messages"),
         inline=False
         )
     await ctx.send(embed=embed)
