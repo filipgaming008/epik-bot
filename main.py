@@ -40,6 +40,6 @@ async def ping(ctx):
 @client.command()
 async def help(ctx):
   await ctx.send("\nAvalable commands: \n!help \n!ping \n!hello \n")
-  
+
 keep_aliveO()
 client.run(os.getenv("TOKEN"))
