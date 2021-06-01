@@ -1,6 +1,5 @@
 # imported stuff from discord, very useful for bot to work
-import discord
-import os
+import discord, os, sys
 from discord import Embed, Status, Game
 from discord.ext import commands
 from discord.ext.commands import has_permissions
@@ -78,14 +77,11 @@ async def say(ctx, *, text):
     await message.delete()
     await ctx.send(f"{text}")
 
-@client.command()
-async def haram(ctx):
-    await ctx.send("yes")
-
-@client.command()
-async def restart(ctx):
-    await ctx.send("Restarting!")
-    sys.exit()
+# restart command - needs fixing
+#@client.command()
+#async def restart(ctx):
+#    await ctx.send("Restarting!")
+#    sys.exit()
 
 # purge command
 @client.command(pass_context=True)
