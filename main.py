@@ -103,7 +103,8 @@ async def help(ctx):
         "\n!ping - pings the bot" 
         "\n!hello - say hi to the bot" 
         "\n!say - make the bot say something" 
-        "\n!purge - purge a said amount of messages"),
+        "\n!purge - purge a said amount of messages" 
+        "\n!prefix - shows the prefix of the bot"),
         inline=False
         )
     await ctx.send(embed=embed)
