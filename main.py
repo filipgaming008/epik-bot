@@ -11,10 +11,10 @@ bruh.members = True
 
 # and so did this
 client = commands.Bot(
-  command_prefix="!",
-  intents=bruh,
-  help_command=None
-  )
+    command_prefix="!",
+    intents=bruh,
+    help_command=None
+    )
 
 # events
 
@@ -61,6 +61,12 @@ async def hello(ctx):
 async def ping(ctx):
     await ctx.send(f"Pong! {round(client.latency, 3)* 100}ms")
 
+@client.command()
+async def say(ctx, *, text):
+    message = ctx.message
+    await message.delete()
+    await ctx.send(f"{text}")
+
 # help command
 @client.command()
 async def help(ctx):
@@ -71,7 +77,10 @@ async def help(ctx):
         )
     embed.add_field(
         name="\nBasic commands:\n",
-        value="!help - brings up this menu \n!ping - pings the bot \n!hello - say hi to the bot",
+        value=("!help - brings up this menu \n" 
+        "!ping - pings the bot" 
+        "\n!hello - say hi to the bot\n" 
+        "!say - make the bot say something"),
         inline=False
         )
     await ctx.send(embed=embed)
