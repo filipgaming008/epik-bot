@@ -1,6 +1,6 @@
 #imported stuff from discord, very useful for bot to work
 import discord, os
-from discord import message
+from discord import message, Embed
 from discord.ext import commands
 from webserver import keep_aliveO
 
@@ -22,11 +22,31 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-  print(f"{member} has joined a server.")
+  for channel in member.guild.channels:
+    if str(channel) == "welcome":
+      embed = Embed(color=0xff0000)
+      embed.add_field(
+        name="Welcome!",
+        value=f"{member.mention} has joined the server!",
+        inline=False
+        )
+      embed.set_image(url=member.avatar_url)
+      
+      await channel.send(embed=embed)
 
 @client.event
 async def on_member_remove(member):
-  print(f"{member} has left a server.")
+  for channel in member.guild.channels:
+    if str(channel) == "welcome":
+      embed = Embed(color=0xff0000)
+      embed.add_field(
+        name="Good bye!",
+        value=f"{member.mention} has left the server!",
+        inline=False
+        )
+      embed.set_image(url=member.avatar_url)
+      
+      await channel.send(embed=embed)
 
 #commands
 @client.command()
