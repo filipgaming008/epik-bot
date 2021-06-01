@@ -79,9 +79,13 @@ async def say(ctx, *, text):
     await ctx.send(f"{text}")
 
 @client.command()
+async def haram(ctx):
+    await ctx.send("yes")
+
+@client.command()
 async def restart(ctx):
     await ctx.send("Restarting!")
-    SystemExit()
+    sys.exit()
 
 # purge command
 @client.command(pass_context=True)
