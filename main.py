@@ -64,6 +64,11 @@ async def hello(ctx):
 async def ping(ctx):
     await ctx.send(f"Pong! {round(client.latency, 3)* 100}ms")
 
+# prefix command
+@client.command()
+async def prefix(ctx):
+    await ctx.send("The bot prefix is !")
+
 # say command
 @client.command()
 async def say(ctx, *, text):
