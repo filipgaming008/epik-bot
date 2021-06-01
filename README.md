@@ -9,11 +9,9 @@ This is a discord bot made by Filip and it is now in development it is yet not d
 
 ## ![](https://user-images.githubusercontent.com/76712316/120328163-dc5ab500-c2ea-11eb-8035-9c35ecdd0412.png)<br>
 
-imput text here<br>
+To run the bot you can use repl.it and import the main.py file into it. Then into the enviroments variables enter the Token of your bot in the value, and in the key part you put the name "TOKEN". Then you may run the bot. Have fun using it. :D<br>
 
 
 ## ![](https://user-images.githubusercontent.com/76712316/120328916-9ce09880-c2eb-11eb-9e27-db666bfda80e.png)<br>
-name - user1<br>
-name - user2<br>
-name - user3<br>
-name - user4<br>
+PH-KDX<br>
+Null-B<br>
