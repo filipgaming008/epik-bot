@@ -1,1 +1,1 @@
-run = "python startup.py"
+run = "python main.py"
