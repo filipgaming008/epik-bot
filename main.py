@@ -1,7 +1,7 @@
 # imported stuff from discord, very useful for bot to work
 import discord
 import os
-from discord import Embed
+from discord import Embed, Status, Game
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 from webserver import keep_alive
@@ -22,6 +22,13 @@ client = commands.Bot(
 # on ready event
 @client.event
 async def on_ready():
+    await client.change_presence(
+        status=Status.online, 
+        activity=Game(
+            "Prefix !"
+            )
+        )
+
     print("Im ready!")
 
 # join event
@@ -64,11 +71,6 @@ async def hello(ctx):
 async def ping(ctx):
     await ctx.send(f"Pong! {round(client.latency, 3)* 100}ms")
 
-# prefix command
-@client.command()
-async def prefix(ctx):
-    await ctx.send("The bot prefix is !")
-
 # say command
 @client.command()
 async def say(ctx, *, text):
@@ -99,12 +101,13 @@ async def help(ctx):
         )
     embed.add_field(
         name="\nBasic commands:\n",
-        value=("!help - brings up this menu" 
-        "\n!ping - pings the bot" 
-        "\n!hello - say hi to the bot" 
-        "\n!say - make the bot say something" 
-        "\n!purge - purge a said amount of messages" 
-        "\n!prefix - shows the prefix of the bot"),
+        value=(
+            "!help - brings up this menu" 
+            "\n!ping - pings the bot" 
+            "\n!hello - say hi to the bot" 
+            "\n!say - make the bot say something" 
+            "\n!purge - purge a said amount of messages"
+            ),
         inline=False
         )
     await ctx.send(embed=embed)
