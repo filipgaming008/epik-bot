@@ -1,1 +1,1 @@
-run = "sh main.sh"
+run = "python startup.py"
