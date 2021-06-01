@@ -16,10 +16,13 @@ client = commands.Bot(
   )
 
 #events
+
+#on ready event
 @client.event
 async def on_ready():
     print("Im ready!")
 
+#join event
 @client.event
 async def on_member_join(member):
   for channel in member.guild.channels:
@@ -34,6 +37,7 @@ async def on_member_join(member):
       
       await channel.send(embed=embed)
 
+#leave event
 @client.event
 async def on_member_remove(member):
   for channel in member.guild.channels:
@@ -49,6 +53,7 @@ async def on_member_remove(member):
       await channel.send(embed=embed)
 
 #commands
+
 @client.command()
 async def hello(ctx):
   await ctx.send("Hello!")
@@ -57,9 +62,18 @@ async def hello(ctx):
 async def ping(ctx):
   await ctx.send(f"Pong! {round(client.latency, 3)* 100}ms")
 
+#help command
 @client.command()
 async def help(ctx):
-  await ctx.send("\nAvalable commands: \n!help \n!ping \n!hello \n")
+  embed=Embed(
+    title = "\nAvailable commands:\n", 
+    description = "", 
+    color = 0xff0000)
+  embed.add_field(
+    name = "\nBasic commands:\n", 
+    value = "!help - brings up this menu \n!ping - pings the bot \n!hello - say hi to the bot", 
+    inline = False)
+  await ctx.send(embed=embed)
 
 keep_aliveO()
 client.run(os.getenv("TOKEN"))
