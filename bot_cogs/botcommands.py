@@ -67,28 +67,5 @@ class botcommands(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
 
-    # help command
-    @commands.command()
-    async def help(self, ctx):
-        embed=Embed(
-            title="\nAvailable commands:\n",
-            description="",
-            color=0xff0000
-            )
-        embed.add_field(
-            name="\nBasic commands:\n",
-            value=(
-                "!help - brings up this menu" 
-                "\n!ping - pings the bot" 
-                "\n!hello - say hi to the bot" 
-                "\n!say - make the bot say something" 
-                "\n!purge - purge a said amount of messages"
-                "\n!load - load a said cog"
-                "\n!unload - unload a said cog"
-                ),
-            inline=False
-            )
-        await ctx.send(embed=embed)
-
 def setup(client):
     client.add_cog(botcommands(client))

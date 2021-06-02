@@ -74,5 +74,30 @@ for filename in os.listdir("./bot_cogs"):
     if filename.endswith(".py"):
         client.load_extension(f"bot_cogs.{filename[:-3]}")
 
+# help command
+@client.command()
+async def help(self, ctx):
+    embed=Embed(
+        title="\nAvailable commands:\n",
+        description="",
+        color=0xff0000
+        )
+    embed.add_field(
+        name="\nBasic commands:\n",
+        value=(
+            "!help - brings up this menu" 
+            "\n!ping - pings the bot" 
+            "\n!hello - say hi to the bot" 
+            "\n!say - make the bot say something" 
+            "\n!purge - purge a said amount of messages"
+            "\n!load - load a said cog"
+            "\n!unload - unload a said cog"
+            "\n!checkcogs all - check to see what cogs are loaded or unloaded"
+            "\n!checkcogs (cog name goes here) - to specify what cog you want to check"
+            ),
+        inline=False
+        )
+    await ctx.send(embed=embed)
+
 keep_alive()
 client.run(os.getenv("TOKEN"))
