@@ -72,8 +72,7 @@ async def ping(ctx):
     message=await ctx.send("Pinging the bot...")
     end_time=time.time()
     await message.edit(
-        f"Pong!\n {round(client.latency, 3)* 100}ms" 
-        f"\nAPI: {round((end_time - start_time), 3)* 100}ms"
+        f"Pong!\n {round(client.latency, 3)* 100}ms \nAPI: {round((end_time - start_time), 3)* 100}ms"
         )
 
 # say command
