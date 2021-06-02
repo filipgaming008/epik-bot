@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "repl_python3_mainpy"
+name = "repl_python3_botcode.py"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
