@@ -69,11 +69,22 @@ async def hello(ctx):
 @client.command()
 async def ping(ctx):
     start_time=time.time()
-    message=await ctx.send("Pinging the bot...")
-    end_time=time.time()
-    await message.edit(
-        f"Pong!\n {round(client.latency, 3)* 100}ms \nAPI: {round((end_time - start_time), 3)* 100}ms"
+    embed=Embed(
+        title="Pinging the bot....", 
+        description="", 
+        color=0xff0000
         )
+    
+    message=await ctx.send(embed=embed)
+    end_time=time.time()
+
+    embed=Embed(
+        title="Pong!", 
+        description=f"Client latency: {round(client.latency, 3)* 100}ms \nAPI Latency: {round((end_time - start_time), 3)* 100}ms", 
+        color=0xff0000
+        )
+    
+    await message.edit(embed=embed)
 
 # say command
 @client.command()
