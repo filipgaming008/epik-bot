@@ -98,6 +98,12 @@ async def say(ctx, *, text):
 async def av(ctx, member: discord.Member):
     await ctx.send(member.avatar_url)
 
+# av error handle
+@av.error
+async def av_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("You have to mention a member or their id!")
+
 # purge command
 @client.command(pass_context=True)
 @has_permissions(administrator=True)
