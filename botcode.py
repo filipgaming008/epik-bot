@@ -76,7 +76,7 @@ for filename in os.listdir("./bot_cogs"):
 
 # help command
 @client.command()
-async def help(self, ctx):
+async def help(ctx):
     embed=Embed(
         title="\nAvailable commands:\n",
         description="",
