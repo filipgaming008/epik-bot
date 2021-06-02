@@ -18,6 +18,33 @@ client=commands.Bot(
 
 # commands
 
+# check cogs command
+@client.command()
+async def checkcogs(ctx, cog_name):
+    if cog_name=="all":
+        for filename in os.listdir("./bot_cogs"):
+            if filename.endswith(".py"):
+                try:
+                    client.load_extension(f"bot_cogs.{filename[:-3]}")
+                except commands.ExtensionAlreadyLoaded:
+                    await ctx.send(f"Cog '{filename[:-3]}' is loaded!")
+                except commands.ExtensionNotFound:
+                    await ctx.send(f"Cog '{filename[:-3]}' not found!")
+                else:
+                    await ctx.send(f"Cog '{filename[:-3]}' is unloaded!")
+                    client.unload_extension(f"bot_cogs.{filename[:-3]}")
+
+    else:
+        try:
+            client.load_extension(f"bot_cogs.{cog_name}")
+        except commands.ExtensionAlreadyLoaded:
+            await ctx.send("Cog is loaded!")
+        except commands.ExtensionNotFound:
+            await ctx.send("Cog not found!")
+        else:
+            await ctx.send("Cog is unloaded!")
+            client.unload_extension(f"bot_cogs.{cog_name}")
+
 # load bot_cogs
 @client.command(pass_context=True)
 @has_permissions(administrator=True)
