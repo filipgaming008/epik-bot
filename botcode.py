@@ -1,6 +1,6 @@
 # imported stuff from discord, very useful for bot to work
 import discord, os, sys, time
-from discord import Embed, Status, Game
+from discord import Embed, Status, Game, member
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 from webserver import keep_alive
@@ -92,6 +92,11 @@ async def say(ctx, *, text):
     message=ctx.message
     await message.delete()
     await ctx.send(f"{text}")
+
+# av command
+@client.command()
+async def av(ctx, member: discord.Member):
+    await ctx.send(member.avatar_url)
 
 # purge command
 @client.command(pass_context=True)
