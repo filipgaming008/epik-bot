@@ -23,7 +23,7 @@ client = commands.Bot(
 async def on_ready():
     await client.change_presence(
         status=Status.online, 
-        activity=Status(
+        activity=Game(
             "!help"
             )
         )
