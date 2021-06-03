@@ -111,6 +111,7 @@ env.bak/
 venv.bak/
 bot-env/
 .vscode/
+poetry.lock
 
 # Spyder project settings
 .spyderproject
