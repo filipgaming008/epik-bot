@@ -1,5 +1,5 @@
-import discord, os, sys, time
-from discord import Embed, Status, Game, member
+import discord, time
+from discord import Embed
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 

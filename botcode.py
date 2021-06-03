@@ -1,6 +1,6 @@
 # imported stuff from discord, very useful for bot to work
-import discord, os, sys, time
-from discord import Embed, Status, Game, member
+import discord, os
+from discord import Embed
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 from webserver import keep_alive
@@ -56,6 +56,9 @@ async def load(ctx, extension):
 async def load_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
+        
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("Mentioned Cog not found!")
 
 # unload bot_cogs
 @client.command(pass_context=True)
@@ -68,6 +71,9 @@ async def unload(ctx, extension):
 async def unload_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
+
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("Mentioned Cog not found!")
 
 # some code to check what files are there in bot_cogs
 for filename in os.listdir("./bot_cogs"):

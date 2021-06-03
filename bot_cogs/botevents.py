@@ -1,5 +1,5 @@
-import discord, os, sys, time
-from discord import Embed, Status, Game, member
+import discord
+from discord import Embed, Status, Game
 from discord.ext import commands
 
 class botevents(commands.Cog):
