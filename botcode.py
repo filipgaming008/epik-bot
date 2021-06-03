@@ -16,7 +16,18 @@ client=commands.Bot(
     help_command=None
     )
 
+u=str("")
+
 # commands
+
+# enable load or unload on restart of bot
+@client.command()
+async def enableload(ctx, u):
+    if u=="True":
+        await ctx.send("Will load Cogs on restart!")
+
+    elif u=="False":
+        await ctx.send("Will not load Cogs on restart!")
 
 # check cogs command
 @client.command()
@@ -56,9 +67,6 @@ async def load(ctx, extension):
 async def load_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
-        
-        elif isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send("Mentioned Cog not found!")
 
 # unload bot_cogs
 @client.command(pass_context=True)
@@ -72,13 +80,11 @@ async def unload_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
 
-        elif isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send("Mentioned Cog not found!")
-
-# some code to check what files are there in bot_cogs
-for filename in os.listdir("./bot_cogs"):
-    if filename.endswith(".py"):
-        client.load_extension(f"bot_cogs.{filename[:-3]}")
+# loads all Cogs on restart
+if u=="True":
+        for filename in os.listdir("./bot_cogs"):
+            if filename.endswith(".py"):
+                client.load_extension(f"bot_cogs.{filename[:-3]}")
 
 # help command
 @client.command()
