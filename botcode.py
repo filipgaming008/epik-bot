@@ -26,7 +26,7 @@ client=commands.Bot(
 # commands
 
 # prefix change command
-@client.command()
+@client.command(pass_context=True)
 @has_permissions(administrator=True)
 async def prefix_change(ctx, e):
     with open("config.json", "r") as f:
@@ -85,6 +85,7 @@ async def checkcogs(ctx, cog_name):
 @has_permissions(administrator=True)
 async def load(ctx, extension):
     client.load_extension(f"bot_cogs.{extension}")
+    await ctx.send(f"{extension} has been loaded!")
 
 # load bot_cogs error handle
 @load.error
@@ -97,6 +98,7 @@ async def load_error(ctx, error):
 @has_permissions(administrator=True)
 async def unload(ctx, extension):
     client.unload_extension(f"bot_cogs.{extension}")
+    await ctx.send(f"{extension} has been unloaded!")
 
 # unload bot_cogs error handle
 @unload.error
@@ -105,7 +107,7 @@ async def unload_error(ctx, error):
         await ctx.send("You cant do that!")
 
 # load all Cogs on start command
-@client.command()
+@client.command(pass_context=True)
 @has_permissions(administrator=True)
 async def loadcogs(ctx, a):
     with open("config.json", "r") as f:
@@ -127,14 +129,15 @@ async def loadcogs_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
-# loads all Cogs on start
-with open("config.json", "r") as f:
-    eee=json.load(f)
-    ee=eee["settings"]["cogs settings"]["loadall"]
-    if ee=="True":
-        for filename in os.listdir("./bot_cogs"):
-            if filename.endswith(".py"):
-                client.load_extension(f"bot_cogs.{filename[:-3]}")
+@client.event
+async def on_ready():
+    with open("config.json", "r") as f:
+        eee=json.load(f)
+        ee=eee["settings"]["cogs settings"]["loadall"]
+        if ee=="True":
+            for filename in os.listdir("./bot_cogs"):
+                if filename.endswith(".py"):
+                    client.load_extension(f"bot_cogs.{filename[:-3]}")
 
 # help command
 @client.command()
