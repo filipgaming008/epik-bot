@@ -1,5 +1,5 @@
 # imported stuff from discord, very useful for bot to work
-import discord, os
+import discord, os, json
 from discord import Embed
 from discord.ext import commands
 from discord.ext.commands import has_permissions
@@ -9,25 +9,33 @@ from webserver import keep_alive
 bruh = discord.Intents.default()
 bruh.members=True
 
-# and so did this
+# json
+
+with open("config.json", "r") as f:
+    data=json.load(f)
+
+pref=data["settings"]["prefix"]
+
+# this took 3 hours to do
 client=commands.Bot(
-    command_prefix="!",
+    command_prefix=pref,
     intents=bruh,
     help_command=None
     )
 
-u=str("")
-
 # commands
 
-# enable load or unload on restart of bot
+# prefix change command
 @client.command()
-async def enableload(ctx, u):
-    if u=="True":
-        await ctx.send("Will load Cogs on restart!")
-
-    elif u=="False":
-        await ctx.send("Will not load Cogs on restart!")
+@has_permissions(administrator=True)
+async def prefix(ctx, e):
+    with open("config.json", "r") as f:
+        brej=json.load(f)
+    brej["settings"]["prefix"]=e
+    with open("config.json", "w") as f:
+        json.dump(brej, f)
+    await ctx.send(f"Prefix has been changed to {e}")
+    client.command_prefix=e
 
 # check cogs command
 @client.command()
@@ -80,11 +88,10 @@ async def unload_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
 
-# loads all Cogs on restart
-if u=="True":
-        for filename in os.listdir("./bot_cogs"):
-            if filename.endswith(".py"):
-                client.load_extension(f"bot_cogs.{filename[:-3]}")
+# loads all Cogs on start
+for filename in os.listdir("./bot_cogs"):
+    if filename.endswith(".py"):
+        client.load_extension(f"bot_cogs.{filename[:-3]}")
 
 # help command
 @client.command()
@@ -97,15 +104,15 @@ async def help(ctx):
     embed.add_field(
         name="\nBasic commands:\n",
         value=(
-            "!help - brings up this menu" 
-            "\n!ping - pings the bot" 
-            "\n!hello - say hi to the bot" 
-            "\n!say - make the bot say something" 
-            "\n!purge - purge a said amount of messages"
-            "\n!load - load a said cog"
-            "\n!unload - unload a said cog"
-            "\n!checkcogs all - check to see what cogs are loaded or unloaded"
-            "\n!checkcogs (cog name goes here) - to specify what cog you want to check"
+            f"{pref}help - brings up this menu" 
+            f"\n{pref}ping - pings the bot" 
+            f"\n{pref}hello - say hi to the bot" 
+            f"\n{pref}say - make the bot say something" 
+            f"\n{pref}purge - purge a said amount of messages"
+            f"\n{pref}load - load a said cog"
+            f"\n{pref}unload - unload a said cog"
+            f"\n{pref}checkcogs all - check to see what cogs are loaded or unloaded"
+            f"\n{pref}checkcogs (cog name goes here) - to specify what cog you want to check"
             ),
         inline=False
         )
