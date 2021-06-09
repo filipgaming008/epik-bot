@@ -129,15 +129,13 @@ async def loadcogs_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
-@client.event
-async def on_ready():
-    with open("config.json", "r") as f:
-        eee=json.load(f)
-        ee=eee["settings"]["cogs settings"]["loadall"]
-        if ee=="True":
-            for filename in os.listdir("./bot_cogs"):
-                if filename.endswith(".py"):
-                    client.load_extension(f"bot_cogs.{filename[:-3]}")
+with open("config.json", "r") as f:
+    eee=json.load(f)
+    ee=eee["settings"]["cogs settings"]["loadall"]
+    if ee=="True":
+        for filename in os.listdir("./bot_cogs"):
+            if filename.endswith(".py"):
+                client.load_extension(f"bot_cogs.{filename[:-3]}")
 
 # help command
 @client.command()
@@ -147,7 +145,7 @@ async def help(ctx):
     broj=bean["settings"]["prefix"]
     embed=Embed(
         title="\nAvailable commands:\n",
-        description="",
+        description="Will fix help command later, (or never)",
         color=0xff0000
         )
     embed.add_field(
@@ -162,6 +160,7 @@ async def help(ctx):
             f"\n{broj}unload - unload a said cog"
             f"\n{broj}checkcogs all - check to see what cogs are loaded or unloaded"
             f"\n{broj}checkcogs (cog name goes here) - to specify what cog you want to check"
+            f"\n{broj}loadcogs (True/False) - set if u want bot to load all cogs on restart or not"
             ),
         inline=False
         )
