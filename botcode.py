@@ -110,7 +110,7 @@ async def unload_error(ctx, error):
 async def loadcogs(ctx, a):
     with open("config.json", "r") as f:
         aa=json.load(f)
-    a=aa["settings"]["cogs settings"]["loadall"]
+    aa["settings"]["cogs settings"]["loadall"]=a
     if a=="True":
         await ctx.send("Will load all cogs on restart!")
         with open("config.json", "w") as f:
