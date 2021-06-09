@@ -1,3 +1,4 @@
+from botcode import prefix
 import discord
 from discord import Embed, Status, Game
 from discord.ext import commands
@@ -12,7 +13,7 @@ class botevents(commands.Cog):
         await self.client.change_presence(
             status=Status.online, 
             activity=Game(
-                "!help"
+                f"{prefix}help"
                 )
             )
         
