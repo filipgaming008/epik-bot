@@ -104,10 +104,37 @@ async def unload_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
+# load all Cogs on start command
+@client.command()
+@has_permissions(administrator=True)
+async def loadcogs(ctx, a):
+    with open("config.json", "r") as f:
+        aa=json.load(f)
+    a=aa["settings"]["cogs settings"]["loadall"]
+    if a=="True":
+        await ctx.send("Will load all cogs on restart!")
+        with open("config.json", "w") as f:
+            json.dump(aa, f)
+    elif a=="False":
+        await ctx.send("Will not load all cogs on restart!")
+        with open("config.json", "w") as f:
+            json.dump(aa, f)
+    else:
+        await ctx.send("You can only enter 'True' or 'False'!")
+
+@loadcogs.error
+async def loadcogs_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You cant do that!")
+
 # loads all Cogs on start
-for filename in os.listdir("./bot_cogs"):
-    if filename.endswith(".py"):
-        client.load_extension(f"bot_cogs.{filename[:-3]}")
+with open("config.json", "r") as f:
+    eee=json.load(f)
+    ee=eee["settings"]["cogs settings"]["loadall"]
+    if ee=="True":
+        for filename in os.listdir("./bot_cogs"):
+            if filename.endswith(".py"):
+                client.load_extension(f"bot_cogs.{filename[:-3]}")
 
 # help command
 @client.command()

@@ -1,5 +1,8 @@
 {
     "settings": {
-        "prefix": "!"
+        "prefix": "!",
+        "cogs settings": {
+            "loadall": "True"
+        }
     }
 }
