@@ -28,7 +28,7 @@ client=commands.Bot(
 # prefix change command
 @client.command()
 @has_permissions(administrator=True)
-async def prefix(ctx, e):
+async def prefix_change(ctx, e):
     with open("config.json", "r") as f:
         brej=json.load(f)
     brej["settings"]["prefix"]=e
@@ -36,6 +36,12 @@ async def prefix(ctx, e):
         json.dump(brej, f)
     await ctx.send(f"Prefix has been changed to {e}")
     client.command_prefix=e
+
+# prefix change command error handle
+@prefix_change.error
+async def prefix_change_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You cant do that!")
 
 # check cogs command
 @client.command()
@@ -73,8 +79,8 @@ async def load(ctx, extension):
 # load bot_cogs error handle
 @load.error
 async def load_error(ctx, error):
-        if isinstance(error, commands.MissingPermissions):
-            await ctx.send("You cant do that!")
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You cant do that!")
 
 # unload bot_cogs
 @client.command(pass_context=True)
@@ -85,8 +91,8 @@ async def unload(ctx, extension):
 # unload bot_cogs error handle
 @unload.error
 async def unload_error(ctx, error):
-        if isinstance(error, commands.MissingPermissions):
-            await ctx.send("You cant do that!")
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You cant do that!")
 
 # loads all Cogs on start
 for filename in os.listdir("./bot_cogs"):
