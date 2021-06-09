@@ -1,6 +1,6 @@
 # imported stuff from discord, very useful for bot to work
 import discord, os, json
-from discord import Embed
+from discord import Embed, Status, Game
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 from webserver import keep_alive
@@ -31,11 +31,21 @@ client=commands.Bot(
 async def prefix_change(ctx, e):
     with open("config.json", "r") as f:
         brej=json.load(f)
+    
     brej["settings"]["prefix"]=e
+
     with open("config.json", "w") as f:
         json.dump(brej, f)
+    
     await ctx.send(f"Prefix has been changed to {e}")
     client.command_prefix=e
+
+    await client.change_presence(
+            status=Status.online, 
+            activity=Game(
+                f"{e}help"
+                )
+            )
 
 # prefix change command error handle
 @prefix_change.error
@@ -102,6 +112,9 @@ for filename in os.listdir("./bot_cogs"):
 # help command
 @client.command()
 async def help(ctx):
+    with open("config.json", "r") as f:
+        bean=json.load(f)
+    broj=bean["settings"]["prefix"]
     embed=Embed(
         title="\nAvailable commands:\n",
         description="",
@@ -110,15 +123,15 @@ async def help(ctx):
     embed.add_field(
         name="\nBasic commands:\n",
         value=(
-            f"{pref}help - brings up this menu" 
-            f"\n{pref}ping - pings the bot" 
-            f"\n{pref}hello - say hi to the bot" 
-            f"\n{pref}say - make the bot say something" 
-            f"\n{pref}purge - purge a said amount of messages"
-            f"\n{pref}load - load a said cog"
-            f"\n{pref}unload - unload a said cog"
-            f"\n{pref}checkcogs all - check to see what cogs are loaded or unloaded"
-            f"\n{pref}checkcogs (cog name goes here) - to specify what cog you want to check"
+            f"{broj}help - brings up this menu" 
+            f"\n{broj}ping - pings the bot" 
+            f"\n{broj}hello - say hi to the bot" 
+            f"\n{broj}say - make the bot say something" 
+            f"\n{broj}purge - purge a said amount of messages"
+            f"\n{broj}load - load a said cog"
+            f"\n{broj}unload - unload a said cog"
+            f"\n{broj}checkcogs all - check to see what cogs are loaded or unloaded"
+            f"\n{broj}checkcogs (cog name goes here) - to specify what cog you want to check"
             ),
         inline=False
         )
