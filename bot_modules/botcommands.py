@@ -49,7 +49,7 @@ class botcommands(commands.Cog):
     @av.error
     async def av_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send("You have to mention a member or their id!")
+            await ctx.send("Missing required argument!")
 
     # purge command
     @commands.command(pass_context=True)

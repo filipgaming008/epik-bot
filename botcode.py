@@ -55,8 +55,8 @@ async def prefix_change_error(ctx, error):
 
 # check cogs command
 @bot.command()
-async def checkmodules(ctx, cog_name):
-    if cog_name=="all":
+async def checkmodules(ctx, module_name):
+    if module_name=="all":
         for filename in os.listdir("./bot_modules"):
             if filename.endswith(".py"):
                 try:
@@ -67,18 +67,23 @@ async def checkmodules(ctx, cog_name):
                     await ctx.send(f"Module '{filename[:-3]}' not found!")
                 else:
                     await ctx.send(f"Module '{filename[:-3]}' is unloaded!")
-                    bot.unload_extension(f"bot_cogs.{filename[:-3]}")
+                    bot.unload_extension(f"bot_modules.{filename[:-3]}")
 
     else:
         try:
-            bot.load_extension(f"bot_cogs.{cog_name}")
+            bot.load_extension(f"bot_cogs.{module_name}")
         except commands.ExtensionAlreadyLoaded:
             await ctx.send("Module is loaded!")
         except commands.ExtensionNotFound:
             await ctx.send("Module not found!")
         else:
             await ctx.send("Module is unloaded!")
-            bot.unload_extension(f"bot_cogs.{cog_name}")
+            bot.unload_extension(f"bot_modules.{module_name}")
+
+@checkmodules.error
+async def checkmodules_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("Missing required argument!")
 
 # load bot_cogs
 @bot.command(pass_context=True)
