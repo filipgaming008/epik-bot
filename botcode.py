@@ -55,7 +55,7 @@ async def prefix_change_error(ctx, error):
 
 # check cogs command
 @bot.command()
-async def checkcogs(ctx, cog_name):
+async def checkmodules(ctx, cog_name):
     if cog_name=="all":
         for filename in os.listdir("./bot_modules"):
             if filename.endswith(".py"):
@@ -109,7 +109,7 @@ async def unload_error(ctx, error):
 # load all Cogs on start command
 @bot.command(pass_context=True)
 @has_permissions(administrator=True)
-async def loadcogs(ctx, a):
+async def loadmodules(ctx, a):
     with open("config.json", "r") as f:
         aa=json.load(f)
     aa["settings"]["module settings"]["loadall"]=a
@@ -124,8 +124,8 @@ async def loadcogs(ctx, a):
     else:
         await ctx.send("You can only enter 'True' or 'False'!")
 
-@loadcogs.error
-async def loadcogs_error(ctx, error):
+@loadmodules.error
+async def loadmodules_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
@@ -163,11 +163,11 @@ async def help(ctx):
         name="\nAdmin commands\n",
         value=(
             f"{broj}purge - purge a said amount of messages"
-            f"\n{broj}load - load a said cog"
-            f"\n{broj}unload - unload a said cog"
-            f"\n{broj}checkcogs all - check to see what cogs are loaded or unloaded"
-            f"\n{broj}checkcogs (cog name goes here) - to specify what cog you want to check"
-            f"\n{broj}loadcogs (True/False) - set if u want bot to load all cogs on restart or not"
+            f"\n{broj}load - load a said module"
+            f"\n{broj}unload - unload a said module"
+            f"\n{broj}checkmodules all - check to see what modules are loaded or unloaded"
+            f"\n{broj}checkmodules (cog name goes here) - to specify what module you want to check"
+            f"\n{broj}loadmodules (True/False) - set if u want bot to load all modules on restart or not"
             ),
         inline=False
         )
