@@ -3,8 +3,8 @@ from discord import Embed, Status, Game
 from discord.ext import commands
 
 class botevents(commands.Cog):
-    def __init__(self, client):
-        self.client=client
+    def __init__(self, bot):
+        self.bot=bot
 
     # on ready event
     @commands.Cog.listener()
@@ -12,7 +12,7 @@ class botevents(commands.Cog):
         with open("config.json", "r") as f:
             brre=json.load(f)
         ea=brre["settings"]["prefix"]
-        await self.client.change_presence(
+        await self.bot.change_presence(
             status=Status.online, 
             activity=Game(
                 f"{ea}help"
@@ -49,5 +49,5 @@ class botevents(commands.Cog):
                 embed.set_image(url=member.avatar_url)
                 await channel.send(embed=embed)
 
-def setup(client):
-    client.add_cog(botevents(client))
+def setup(bot):
+    bot.add_cog(botevents(bot))

@@ -17,7 +17,7 @@ with open("config.json", "r") as f:
 pref=data["settings"]["prefix"]
 
 # this took 3 hours to do
-client=commands.Bot(
+bot=commands.Bot(
     command_prefix=pref,
     intents=bruh,
     help_command=None
@@ -26,7 +26,7 @@ client=commands.Bot(
 # commands
 
 # prefix change command
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def prefix_change(ctx, e):
     with open("config.json", "r") as f:
@@ -38,9 +38,9 @@ async def prefix_change(ctx, e):
         json.dump(brej, f)
     
     await ctx.send(f"Prefix has been changed to {e}")
-    client.command_prefix=e
+    bot.command_prefix=e
 
-    await client.change_presence(
+    await bot.change_presence(
             status=Status.online, 
             activity=Game(
                 f"{e}help"
@@ -54,37 +54,37 @@ async def prefix_change_error(ctx, error):
         await ctx.send("You cant do that!")
 
 # check cogs command
-@client.command()
+@bot.command()
 async def checkcogs(ctx, cog_name):
     if cog_name=="all":
         for filename in os.listdir("./bot_modules"):
             if filename.endswith(".py"):
                 try:
-                    client.load_extension(f"bot_modules.{filename[:-3]}")
+                    bot.load_extension(f"bot_modules.{filename[:-3]}")
                 except commands.ExtensionAlreadyLoaded:
                     await ctx.send(f"Module '{filename[:-3]}' is loaded!")
                 except commands.ExtensionNotFound:
                     await ctx.send(f"Module '{filename[:-3]}' not found!")
                 else:
                     await ctx.send(f"Module '{filename[:-3]}' is unloaded!")
-                    client.unload_extension(f"bot_cogs.{filename[:-3]}")
+                    bot.unload_extension(f"bot_cogs.{filename[:-3]}")
 
     else:
         try:
-            client.load_extension(f"bot_cogs.{cog_name}")
+            bot.load_extension(f"bot_cogs.{cog_name}")
         except commands.ExtensionAlreadyLoaded:
             await ctx.send("Module is loaded!")
         except commands.ExtensionNotFound:
             await ctx.send("Module not found!")
         else:
             await ctx.send("Module is unloaded!")
-            client.unload_extension(f"bot_cogs.{cog_name}")
+            bot.unload_extension(f"bot_cogs.{cog_name}")
 
 # load bot_cogs
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def load(ctx, extension):
-    client.load_extension(f"bot_modules.{extension}")
+    bot.load_extension(f"bot_modules.{extension}")
     await ctx.send(f"{extension} has been loaded!")
 
 # load bot_cogs error handle
@@ -94,10 +94,10 @@ async def load_error(ctx, error):
         await ctx.send("You cant do that!")
 
 # unload bot_cogs
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def unload(ctx, extension):
-    client.unload_extension(f"bot_modules.{extension}")
+    bot.unload_extension(f"bot_modules.{extension}")
     await ctx.send(f"{extension} has been unloaded!")
 
 # unload bot_cogs error handle
@@ -107,7 +107,7 @@ async def unload_error(ctx, error):
         await ctx.send("You cant do that!")
 
 # load all Cogs on start command
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def loadcogs(ctx, a):
     with open("config.json", "r") as f:
@@ -135,10 +135,10 @@ with open("config.json", "r") as f:
     if ee=="True":
         for filename in os.listdir("./bot_modules"):
             if filename.endswith(".py"):
-                client.load_extension(f"bot_modules.{filename[:-3]}")
+                bot.load_extension(f"bot_modules.{filename[:-3]}")
 
 # help command
-@client.command()
+@bot.command()
 async def help(ctx):
     with open("config.json", "r") as f:
         bean=json.load(f)
@@ -179,4 +179,4 @@ async def help(ctx):
 
 
 keep_alive()
-client.run(os.getenv("TOKEN"))
+bot.run(os.getenv("TOKEN"))

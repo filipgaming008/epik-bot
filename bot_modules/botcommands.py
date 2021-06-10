@@ -4,8 +4,8 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions
 
 class botcommands(commands.Cog):
-    def __init__(self, client):
-        self.client=client
+    def __init__(self, bot):
+        self.bot=bot
 
     # hello command
     @commands.command()
@@ -67,5 +67,5 @@ class botcommands(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
 
-def setup(client):
-    client.add_cog(botcommands(client))
+def setup(bot):
+    bot.add_cog(botcommands(bot))
