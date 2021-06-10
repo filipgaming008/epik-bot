@@ -147,7 +147,7 @@ async def help(ctx):
         title="\nAvailable commands:\n",
         description="",
         color=0xff0000
-        ),
+        )
     embed.add_field(
         name="\nBasic commands:\n",
         value=(
@@ -155,6 +155,7 @@ async def help(ctx):
             f"\n{broj}ping - pings the bot" 
             f"\n{broj}hello - say hi to the bot" 
             f"\n{broj}say - make the bot say something" 
+            f"\n{broj}av - avatar command"
             ),
         inline=False
         )
