@@ -1,4 +1,4 @@
-import discord
+import discord, json
 from discord import Embed, Status, Game
 from discord.ext import commands
 
@@ -9,10 +9,13 @@ class botevents(commands.Cog):
     # on ready event
     @commands.Cog.listener()
     async def on_ready(self):
+        with open("config.json", "r") as f:
+            brre=json.load(f)
+        ea=brre["settings"]["prefix"]
         await self.client.change_presence(
             status=Status.online, 
             activity=Game(
-                "!help"
+                f"{ea}help"
                 )
             )
         

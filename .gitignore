@@ -112,6 +112,7 @@ venv.bak/
 bot-env/
 .vscode/
 poetry.lock
+config.json
 
 # Spyder project settings
 .spyderproject

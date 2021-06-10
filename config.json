@@ -1,0 +1,8 @@
+{
+    "settings": {
+        "prefix": "!",
+        "module settings": {
+            "loadall": "True"
+        }
+    }
+}
