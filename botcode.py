@@ -1,6 +1,7 @@
 # imported stuff from discord, very useful for bot to work
-import discord, os, json
+import discord, os, json, time
 from discord import Embed, Status, Game
+from discord import message
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 from webserver import keep_alive
@@ -141,6 +142,12 @@ with open("config.json", "r") as f:
         for filename in os.listdir("./bot_modules"):
             if filename.endswith(".py"):
                 bot.load_extension(f"bot_modules.{filename[:-3]}")
+
+@bot.command()
+async def sleep(ctx, e):
+    if message.author.id==299589959789051904:
+        await ctx.send("Sleeping for {e}seconds")
+        time.sleep(e)
 
 # help command
 @bot.command()
