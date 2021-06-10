@@ -143,12 +143,6 @@ with open("config.json", "r") as f:
             if filename.endswith(".py"):
                 bot.load_extension(f"bot_modules.{filename[:-3]}")
 
-@bot.command()
-async def sleep(ctx, e):
-    if message.author.id==299589959789051904:
-        await ctx.send("Sleeping for {e}seconds")
-        time.sleep(e)
-
 # help command
 @bot.command()
 async def help(ctx):
