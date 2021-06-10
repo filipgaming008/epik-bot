@@ -1,7 +1,7 @@
 {
     "settings": {
         "prefix": "!",
-        "cogs settings": {
+        "module settings": {
             "loadall": "True"
         }
     }
