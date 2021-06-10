@@ -127,7 +127,7 @@ async def loadmodules(ctx, a):
         with open("config.json", "w") as f:
             json.dump(aa, f)
     else:
-        await ctx.send("You can only enter 'True' or 'False'!")
+        await ctx.send("Invalid argument! (Only True/False)")
 
 @loadmodules.error
 async def loadmodules_error(ctx, error):
