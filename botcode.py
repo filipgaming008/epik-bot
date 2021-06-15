@@ -1,7 +1,6 @@
 # imported stuff from discord, very useful for bot to work
-import discord, os, json, time
+import discord, os, json
 from discord import Embed, Status, Game
-from discord import message
 from discord.ext import commands
 from discord.ext.commands import has_permissions
 from webserver import keep_alive

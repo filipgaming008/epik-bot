@@ -1,4 +1,4 @@
-import discord, json
+import json
 from discord import Embed, Status, Game
 from discord.ext import commands
 

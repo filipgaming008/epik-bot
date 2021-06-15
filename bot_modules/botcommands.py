@@ -27,7 +27,7 @@ class botcommands(commands.Cog):
 
         embed=Embed(
             title="Pong!", 
-            description=f"Client latency: {round(self.client.latency, 3)* 100}ms \nAPI Latency: {round((end_time - start_time), 3)* 100}ms", 
+            description=f"Client latency: {round(self.bot.latency, 3)* 100}ms \nAPI Latency: {round((end_time - start_time), 3)* 100}ms", 
             color=0xff0000
             )
     
