@@ -15,4 +15,3 @@ discord = "^1.0.1"
 [build-system]
 requires = ["poetry>=0.12"]
 uild-backend = "poetry.masonry.api"
-
