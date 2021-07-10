@@ -1,7 +1,5 @@
-# imports
-import discord
-import os
-import json
+# imported stuff for bot to work
+import discord, json, os
 from discord import Embed, Status, Game
 from discord.ext import commands
 from discord.ext.commands import has_permissions
@@ -23,8 +21,8 @@ bot = commands.Bot(
 )
 
 # commands
-  # prefix change command
 
+# prefix change command
 @bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def prefix_change(ctx, e):
@@ -46,15 +44,13 @@ async def prefix_change(ctx, e):
         )
     )
 
-  # prefix change command error handle
-
+# prefix change command error handle
 @prefix_change.error
 async def prefix_change_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
-  # check cogs command
-
+# check cogs command
 @bot.command()
 async def checkmodules(ctx, module_name):
     if module_name == "all":
@@ -87,38 +83,33 @@ async def checkmodules_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send("Missing required argument!")
 
-  # load bot_cogs
-
+# load bot_cogs
 @bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def load(ctx, extension):
     bot.load_extension(f"bot_modules.{extension}")
     await ctx.send(f"{extension} has been loaded!")
 
-  # load bot_cogs error handle
-
+# load bot_cogs error handle
 @load.error
 async def load_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
-  # unload bot_cogs
-
+# unload bot_cogs
 @bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def unload(ctx, extension):
     bot.unload_extension(f"bot_modules.{extension}")
     await ctx.send(f"{extension} has been unloaded!")
 
-  # unload bot_cogs error handle
-
+# unload bot_cogs error handle
 @unload.error
 async def unload_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
-  # load all Cogs on start command
-
+# load all Cogs on start command
 @bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def loadmodules(ctx, a):
@@ -150,8 +141,7 @@ with open("config.json", "r") as f:
             if filename.endswith(".py"):
                 bot.load_extension(f"bot_modules.{filename[:-3]}")
 
-  # help command
-
+# help command
 @bot.command()
 async def help(ctx):
     with open("config.json", "r") as f:
