@@ -1,7 +1,5 @@
 # imports
-import discord
-import os
-import json
+import discord, os, json
 from discord import Embed, Status, Game
 from discord.ext import commands
 from discord.ext.commands import has_permissions
