@@ -1,5 +1,5 @@
-# imported stuff for bot to work
-import discord, json, os
+# imports
+import discord, os, json
 from discord import Embed, Status, Game
 from discord.ext import commands
 from discord.ext.commands import has_permissions
