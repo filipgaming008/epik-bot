@@ -9,7 +9,7 @@ class botevents(commands.Cog):
     # on ready event
     @commands.Cog.listener()
     async def on_ready(self):
-        with open("config.json", "r") as f:
+        with open("./bot_json_files/config.json", "r") as f:
             brre = json.load(f)
         ea = brre["settings"]["prefix"]
         await self.bot.change_presence(
