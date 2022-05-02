@@ -157,7 +157,6 @@ async def help(ctx):
             f"{broj}help - brings up this menu"
             f"\n{broj}ping - pings the bot"
             f"\n{broj}hello - say hi to the bot"
-            f"\n{broj}say - make the bot say something"
             f"\n{broj}av - avatar command"
         ),
         inline=False
@@ -165,6 +164,7 @@ async def help(ctx):
     embed.add_field(
         name="\nAdmin commands\n",
         value=(
+            f"\n{broj}say - make the bot say something"
             f"{broj}purge - purge a said amount of messages"
             f"\n{broj}load - load a said module"
             f"\n{broj}unload - unload a said module"
