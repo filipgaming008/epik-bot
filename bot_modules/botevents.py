@@ -1,5 +1,5 @@
 # imports
-import json, discord, aiofiles
+import json, discord
 from discord import Embed, Status, Game
 from discord.ext import commands
 
@@ -9,38 +9,11 @@ class botevents(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    
-
-    bot.warnings = {}
 
 
     # on ready event
     @commands.Cog.listener()
     async def on_ready(self):
-        for guild in bot.guilds:
-            async with aiofiles.open(f"{guild.id}.txt", mode="a") as temp:
-                pass
-
-            bot.warnings[guild.id] = {}
-
-        for guild in bot.guilds:
-            async with aiofiles.open(f"{guild.id}.txt", mode="r") as file:
-                lines = await file.readlines()
-
-                for line in lines:
-                    data = line.split(" ")
-                    member_id = int(data[0])
-                    admin_id = int(data[0])
-                    reason = " ".join(data[2:]).strip("\n")
-
-                    try:
-                        bot.warnings[guild.id][member_id][0] += 1
-                        bot.warnings[guild.id][member_id][1].append((admin_id, reason))
-
-                    except KeyError:
-                        bot.warnings[guild.id][member_id] = [1, [(admin_id, reason)]]
-
-
         with open("./bot_json_files/config.json", "r") as f:
             brre = json.load(f)
         ea = brre["settings"]["prefix"]
