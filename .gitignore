@@ -107,7 +107,6 @@ venv.bak/
 bot-env/
 .vscode/
 poetry.lock
-config.json
 
 # Spyder project settings
 .spyderproject
@@ -127,5 +126,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Discord token
-token.json
+# Dicord token
+bot_json_files/token.json

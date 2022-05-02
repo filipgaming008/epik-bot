@@ -8,7 +8,7 @@ bruh = discord.Intents.default()
 bruh.members = True
 
 # json
-with open("config.json", "r") as f:
+with open("bot_json_files/config.json", "r") as f:
     data = json.load(f)
 
 pref = data["settings"]["prefix"]
@@ -25,12 +25,12 @@ bot = commands.Bot(
 @bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def prefix_change(ctx, e):
-    with open("config.json", "r") as f:
+    with open("bot_json_files/config.json", "r") as f:
         brej = json.load(f)
 
     brej["settings"]["prefix"] = e
 
-    with open("config.json", "w") as f:
+    with open("bot_json_files/config.json", "w") as f:
         json.dump(brej, f)
 
     await ctx.send(f"Prefix has been changed to {e}")
@@ -112,16 +112,16 @@ async def unload_error(ctx, error):
 @bot.command(pass_context=True)
 @has_permissions(administrator=True)
 async def loadmodules(ctx, a):
-    with open("config.json", "r") as f:
+    with open("bot_json_files/config.json", "r") as f:
         aa = json.load(f)
     aa["settings"]["module settings"]["loadall"] = a
     if a == "True":
         await ctx.send("Will load all modules on restart!")
-        with open("config.json", "w") as f:
+        with open("bot_json_files/config.json", "w") as f:
             json.dump(aa, f)
     elif a == "False":
         await ctx.send("Will not load all modules on restart!")
-        with open("config.json", "w") as f:
+        with open("bot_json_files/config.json", "w") as f:
             json.dump(aa, f)
     else:
         await ctx.send("Invalid argument! (Only True/False)")
@@ -132,7 +132,7 @@ async def loadmodules_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
-with open("config.json", "r") as f:
+with open("bot_json_files/config.json", "r") as f:
     eee = json.load(f)
     ee = eee["settings"]["module settings"]["loadall"]
     if ee == "True":
@@ -143,7 +143,7 @@ with open("config.json", "r") as f:
 # help command
 @bot.command()
 async def help(ctx):
-    with open("config.json", "r") as f:
+    with open("bot_json_files/config.json", "r") as f:
         bean = json.load(f)
     broj = bean["settings"]["prefix"]
     embed = Embed(
@@ -176,7 +176,7 @@ async def help(ctx):
     )
     await ctx.send(embed=embed)
 
-with open("token.json", "r") as f:
+with open("bot_json_files/token.json", "r") as f:
     acde = json.load(f)
     token = acde["token"]
 
