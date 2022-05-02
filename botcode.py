@@ -164,8 +164,8 @@ async def help(ctx):
     embed.add_field(
         name="\nAdmin commands\n",
         value=(
-            f"\n{broj}say - make the bot say something"
-            f"{broj}purge - purge a said amount of messages"
+            f"{broj}say - make the bot say something"
+            f"\n{broj}purge - purge a said amount of messages"
             f"\n{broj}load - load a said module"
             f"\n{broj}unload - unload a said module"
             f"\n{broj}checkmodules all - check to see what modules are loaded or unloaded"
