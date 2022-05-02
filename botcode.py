@@ -20,14 +20,17 @@ bot = commands.Bot(
 )
 
 # initialisation of warnings.json
-while 1:
-    for filename in os.listdir("./bot_json_files"):
-        if filename.startswith("warnings.json"):
-            print("warnings.json already exists!")
 
-        else:
-            with open("./bot_json_files/warnings.json", "w") as f:
-                print("Crated warnings.json!")
+warnings_exists = False
+
+for filename in os.listdir("./bot_json_files"):
+    if filename.startswith("warnings.json"):
+        print("warnings.json already exists!")
+        warnings_exists = True
+
+if not warnings_exists:
+    with open("./bot_json_files/warnings.json", "w") as f:
+        print("Crated warnings.json!")
 
 
 # commands
