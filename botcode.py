@@ -27,8 +27,8 @@ for filename in os.listdir("./bot_json_files"):
         None
 
     else:
-        with open("./bot_json_files/warnings.json", "r") as f:
-            tt=json.load(f)
+        with open("./bot_json_files/warnings.json", "w") as f:
+           json.dump(f)
 
 
 # commands
