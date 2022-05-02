@@ -24,11 +24,11 @@ bot = commands.Bot(
 
 for filename in os.listdir("./bot_json_files"):
     if filename.startswith("warnings"):
-        None
+        print("warnings.json already exists!")
 
     else:
         with open("./bot_json_files/warnings.json", "w") as f:
-           json.dump(f)
+            print("Crated warnings.json!")
 
 
 # commands
