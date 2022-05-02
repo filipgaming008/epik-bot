@@ -1,5 +1,4 @@
 # imports
-from attr import NOTHING
 import discord, os, json
 from discord import Embed, Status, Game
 from discord.ext import commands
@@ -20,15 +19,15 @@ bot = commands.Bot(
     help_command=None
 )
 
-# warnings
+# initialisation of warnings.json
+while 1:
+    for filename in os.listdir("./bot_json_files"):
+        if filename.startswith("warnings.json"):
+            print("warnings.json already exists!")
 
-for filename in os.listdir("./bot_json_files"):
-    if filename.startswith("warnings"):
-        print("warnings.json already exists!")
-
-    else:
-        with open("./bot_json_files/warnings.json", "w") as f:
-            print("Crated warnings.json!")
+        else:
+            with open("./bot_json_files/warnings.json", "w") as f:
+                print("Crated warnings.json!")
 
 
 # commands
