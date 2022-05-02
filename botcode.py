@@ -3,7 +3,6 @@ import discord, os, json
 from discord import Embed, Status, Game
 from discord.ext import commands
 from discord.ext.commands import has_permissions
-from webserver import keep_alive
 
 bruh = discord.Intents.default()
 bruh.members = True
@@ -177,5 +176,5 @@ async def help(ctx):
     )
     await ctx.send(embed=embed)
 
-keep_alive()
+
 bot.run(os.getenv("TOKEN"))
