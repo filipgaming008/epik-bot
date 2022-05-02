@@ -128,3 +128,7 @@ dmypy.json
 
 # Dicord token
 bot_json_files/token.json
+
+# JSON files
+bot_json_files/config.json
+bot_json_files/warnings.json
