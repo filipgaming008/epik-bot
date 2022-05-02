@@ -176,5 +176,8 @@ async def help(ctx):
     )
     await ctx.send(embed=embed)
 
+with open("token.json", "r") as f:
+    acde = json.load(f)
+    token = acde["token"]
 
-bot.run(os.getenv("TOKEN"))
+bot.run(token)
