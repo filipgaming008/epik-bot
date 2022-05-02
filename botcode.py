@@ -1,4 +1,5 @@
 # imports
+from attr import NOTHING
 import discord, os, json
 from discord import Embed, Status, Game
 from discord.ext import commands
@@ -18,6 +19,17 @@ bot = commands.Bot(
     intents=bruh,
     help_command=None
 )
+
+# warnings
+
+for filename in os.listdir("./bot_json_files"):
+    if filename.startswith("warnings"):
+        None
+
+    else:
+        with open("./bot_json_files/warnings.json", "r") as f:
+            tt=json.load(f)
+
 
 # commands
 
