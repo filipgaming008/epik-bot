@@ -19,6 +19,10 @@ bot = commands.Bot(
     help_command=None
 )
 
+# remove nohup.out
+
+os.remove("nohup.out")
+
 # initialisation of warnings.json
 
 warnings_exists = False
