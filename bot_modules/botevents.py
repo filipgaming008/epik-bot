@@ -28,7 +28,7 @@ class botevents(commands.Cog):
 
 
     # ISD code
-    @commands.Cog.listener(pass_context=True)
+    @commands.Cog.listener()
     async def on_message(self, member, *, message):
         channel = message.channel
         if channel != "986325938247716904" or "848878286914322435":
