@@ -1,6 +1,6 @@
 {
     "settings": {
-        "prefix": "!",
+        "prefix": "%",
         "module settings": {
             "loadall": "True"
         }

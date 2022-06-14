@@ -27,35 +27,44 @@ class botevents(commands.Cog):
         print("Im ready!")
 
 
+    # ISD code
+    @commands.Cog.listener(pass_context=True)
+    async def on_message(self, member, *, message):
+        channel = message.channel
+        if channel != "986325938247716904" or "848878286914322435":
+            return 0
+        await member.add_roles("TWO")
+        await member.remove_roles("ONE")
 
+"""
     # join event
-    #@commands.Cog.listener()
-    #async def on_member_join(self, member):
-    #    for channel in member.guild.channels:
-    #        if str(channel) == "welcome":
-    #            embed = Embed(color=0xff0000)
-    #            embed.add_field(
-    #                name="Welcome!",
-    #                value=f"{member.mention} has joined the server!",
-    #                inline=False
-    #            )
-    #            embed.set_image(url=member.avatar_url)
-    #            await channel.send(embed=embed)
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        for channel in member.guild.channels:
+            if str(channel) == "welcome":
+                embed = Embed(color=0xff0000)
+                embed.add_field(
+                    name="Welcome!",
+                    value=f"{member.mention} has joined the server!",
+                    inline=False
+                )
+                embed.set_image(url=member.avatar_url)
+                await channel.send(embed=embed)
 
     # leave event
-    #@commands.Cog.listener()
-    #async def on_member_remove(self, member):
-    #    for channel in member.guild.channels:
-    #        if str(channel) == "welcome":
-    #            embed = Embed(color=0xff0000)
-    #            embed.add_field(
-    #                name="Good bye!",
-    #                value=f"{member.mention} has left the server!",
-    #                inline=False
-    #            )
-    #            embed.set_image(url=member.avatar_url)
-    #            await channel.send(embed=embed)
-
+    @commands.Cog.listener()
+    async def on_member_remove(self, member):
+        for channel in member.guild.channels:
+            if str(channel) == "welcome":
+                embed = Embed(color=0xff0000)
+                embed.add_field(
+                    name="Good bye!",
+                    value=f"{member.mention} has left the server!",
+                    inline=False
+                )
+                embed.set_image(url=member.avatar_url)
+                await channel.send(embed=embed)
+"""
 
 
 def setup(bot):
