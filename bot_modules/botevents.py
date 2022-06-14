@@ -34,14 +34,16 @@ class botevents(commands.Cog):
         channel = message.channel
         user = message.author
         text = message.content
+        guild = await(self.bot_guild)
 
         print(message.content)
 
         if (channel == "986325938247716904") or ("848878286914322435"):
             if text == "***":
-                await user.add_roles(986327355838570586)
-                await user.remove_roles(986326065049899039)
-                print("Roles added./Removed!")
+                role = discord.utils.get(guild.roles, name="TWO")
+                role2 = discord.utils.get(guild.roles, name="ONE")
+                await user.add_roles(role)
+                await user.remove_roles(role2)
 
 
 """
