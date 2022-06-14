@@ -34,6 +34,8 @@ class botevents(commands.Cog):
         channel = message.channel
         user = message.author.id
 
+        print(message)
+
         if channel == "986325938247716904" or "848878286914322435":
             if message == "***":
                 await user.add_roles("986327355838570586")
