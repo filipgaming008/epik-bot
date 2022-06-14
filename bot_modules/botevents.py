@@ -33,8 +33,8 @@ class botevents(commands.Cog):
         channel = message.channel
         if channel != "986325938247716904" or "848878286914322435":
             return 0
-        await member.add_roles("TWO")
-        await member.remove_roles("ONE")
+        await member.add_roles("986327355838570586")
+        await member.remove_roles("986326065049899039")
 
 """
     # join event
