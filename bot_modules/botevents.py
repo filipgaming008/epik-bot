@@ -32,16 +32,16 @@ class botevents(commands.Cog):
     async def on_message(self, message):
 
         channel = message.channel
-        user = message.author.id
+        user = message.author
         text = message.content
 
-        print(message)
+        print(message.content)
 
-        if channel == "986325938247716904" or "848878286914322435":
+        if (channel == "986325938247716904") or ("848878286914322435"):
             if text == "***":
-                await user.add_roles("986327355838570586")
-                await user.remove_roles("986326065049899039")
-                print("Roles added.")
+                await user.add_roles(986327355838570586)
+                await user.remove_roles(986326065049899039)
+                print("Roles added./Removed!")
 
 
 """
