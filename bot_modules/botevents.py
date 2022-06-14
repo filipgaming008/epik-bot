@@ -29,7 +29,7 @@ class botevents(commands.Cog):
 
     # ISD code
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message(self, message, *, text):
 
         channel = message.channel
         user = message.author.id
@@ -37,7 +37,7 @@ class botevents(commands.Cog):
         print(message)
 
         if channel == "986325938247716904" or "848878286914322435":
-            if message == "***":
+            if text == "***":
                 await user.add_roles("986327355838570586")
                 await user.remove_roles("986326065049899039")
                 print("Roles added.")
