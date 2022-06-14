@@ -29,12 +29,14 @@ class botevents(commands.Cog):
 
     # ISD code
     @commands.Cog.listener()
-    async def on_message(self, user: discord.member, *, message):
+    async def on_message(self, message):
         channel = message.channel
         if channel != "986325938247716904" or "848878286914322435":
             return 0
+        user = message.author.id
         await user.add_roles("986327355838570586")
         await user.remove_roles("986326065049899039")
+
 
 """
     # join event
