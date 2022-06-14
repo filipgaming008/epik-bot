@@ -10,9 +10,9 @@ class botcommands(commands.Cog):
         self.bot = bot
 
     # hello command
-    @commands.command()
-    async def hello(self, ctx):
-        await ctx.send("Hello!")
+    #@commands.command()
+    #async def hello(self, ctx):
+    #    await ctx.send("Hello!")
 
     # ping command
     @commands.command()
@@ -36,15 +36,15 @@ class botcommands(commands.Cog):
         await message.edit(embed=embed)
 
     # av command
-    @commands.command()
-    async def av(self, ctx, member: discord.Member):
-        await ctx.send(member.avatar_url)
+    #@commands.command()
+    #async def av(self, ctx, member: discord.Member):
+    #    await ctx.send(member.avatar_url)
 
     # av error handle
-    @av.error
-    async def av_error(self, ctx, error):
-        if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send("Missing required argument!")
+    #@av.error
+    #async def av_error(self, ctx, error):
+    #    if isinstance(error, commands.MissingRequiredArgument):
+    #        await ctx.send("Missing required argument!")
 
 
 

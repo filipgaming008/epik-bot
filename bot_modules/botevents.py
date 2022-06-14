@@ -29,32 +29,32 @@ class botevents(commands.Cog):
 
 
     # join event
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        for channel in member.guild.channels:
-            if str(channel) == "welcome":
-                embed = Embed(color=0xff0000)
-                embed.add_field(
-                    name="Welcome!",
-                    value=f"{member.mention} has joined the server!",
-                    inline=False
-                )
-                embed.set_image(url=member.avatar_url)
-                await channel.send(embed=embed)
+    #@commands.Cog.listener()
+    #async def on_member_join(self, member):
+    #    for channel in member.guild.channels:
+    #        if str(channel) == "welcome":
+    #            embed = Embed(color=0xff0000)
+    #            embed.add_field(
+    #                name="Welcome!",
+    #                value=f"{member.mention} has joined the server!",
+    #                inline=False
+    #            )
+    #            embed.set_image(url=member.avatar_url)
+    #            await channel.send(embed=embed)
 
     # leave event
-    @commands.Cog.listener()
-    async def on_member_remove(self, member):
-        for channel in member.guild.channels:
-            if str(channel) == "welcome":
-                embed = Embed(color=0xff0000)
-                embed.add_field(
-                    name="Good bye!",
-                    value=f"{member.mention} has left the server!",
-                    inline=False
-                )
-                embed.set_image(url=member.avatar_url)
-                await channel.send(embed=embed)
+    #@commands.Cog.listener()
+    #async def on_member_remove(self, member):
+    #    for channel in member.guild.channels:
+    #        if str(channel) == "welcome":
+    #            embed = Embed(color=0xff0000)
+    #            embed.add_field(
+    #                name="Good bye!",
+    #                value=f"{member.mention} has left the server!",
+    #                inline=False
+    #            )
+    #            embed.set_image(url=member.avatar_url)
+    #            await channel.send(embed=embed)
 
 
 
