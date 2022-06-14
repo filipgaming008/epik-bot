@@ -29,10 +29,11 @@ class botevents(commands.Cog):
 
     # ISD code
     @commands.Cog.listener()
-    async def on_message(self, message, *, text):
+    async def on_message(self, message):
 
         channel = message.channel
         user = message.author.id
+        text = message.content
 
         print(message)
 
