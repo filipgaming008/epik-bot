@@ -34,7 +34,7 @@ class botevents(commands.Cog):
         channel = message.channel
         user = message.author
         text = message.content
-        guild = await(self.bot_guild)
+        guild = await(self.bot.fetch_guild)
 
         print(message.content)
 
