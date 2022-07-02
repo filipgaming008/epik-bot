@@ -1,3 +1,4 @@
+
 # imports
 import json, discord
 from discord import Embed, Status, Game
@@ -26,7 +27,7 @@ class botevents(commands.Cog):
 
         print("Im ready!")
 
-
+"""
     # ISD code
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -46,7 +47,7 @@ class botevents(commands.Cog):
                 await user.remove_roles(role2)
 
 
-"""
+
     # join event
     @commands.Cog.listener()
     async def on_member_join(self, member):
@@ -74,8 +75,9 @@ class botevents(commands.Cog):
                 )
                 embed.set_image(url=member.avatar_url)
                 await channel.send(embed=embed)
-"""
+
 
 
 def setup(bot):
     bot.add_cog(botevents(bot))
+"""
