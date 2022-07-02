@@ -8,9 +8,13 @@ class warning_reaction(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
+    # Message sending on an interval
+
     @tasks.loop(seconds=20)
-    async def printingmessage():
-        print("test")
+    async def printingmessage(self):
+        channel = self.bot.get_channel(848878286914322435)
+        await channel.send("Hello there!")
 
     printingmessage.start()
 
@@ -29,7 +33,6 @@ class warning_reaction(commands.Cog):
                 Memberlist.append(Member.id)
             
         print(Memberlist)
-        await printingmessage()
     
 
 
