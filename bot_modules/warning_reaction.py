@@ -1,12 +1,18 @@
 # imports
 import discord, time
 from discord import Embed
-from discord.ext import commands
+from discord.ext import commands, tasks
 
 
 class warning_reaction(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @tasks.loop(seconds=20)
+    async def printingmessage():
+        print("test")
+
+    printingmessage.start()
 
     # Getting member ID's on on_ready
 
@@ -23,7 +29,8 @@ class warning_reaction(commands.Cog):
                 Memberlist.append(Member.id)
             
         print(Memberlist)
-
+        await printingmessage()
+    
 
 
 def setup(bot):
