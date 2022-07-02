@@ -12,10 +12,13 @@ class warning_reaction(commands.Cog):
     # Message sending on an interval
 
     @tasks.loop(seconds=20)
-    @commands.command
     async def printingmessage(self):
         channel = self.bot.get_channel(848878286914322435)
         await channel.send("Hello there!")
+
+    @commands.command()
+    async def printingmessage(self):
+        self.bot.loop.create_task(printingmessage(self))
 
 
     # Getting member ID's on on_ready
