@@ -185,7 +185,7 @@ async def help(ctx):
 
 @bot.event
 async def on_ready():
-    guild = bot.get_guild(863725674065952789)
+    guild = bot.fetch_guild(863725674065952789)
     print("Im on it!")
     for member in guild.fetch_members:
         print(member.name)
