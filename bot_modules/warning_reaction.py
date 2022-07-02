@@ -16,7 +16,7 @@ class warning_reaction(commands.Cog):
         channel = self.bot.get_channel(848878286914322435)
         await channel.send("Hello there!")
 
-    printingmessage.start()
+    printingmessage(self).start()
 
     # Getting member ID's on on_ready
 
