@@ -12,7 +12,7 @@ class warning_reaction(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        guild = self.get_guild(845624418650161172)
+        guild = self.bot.get_guild(845624418650161172)
         print("Im on it!")
         for Member in guild.members:
             print (guild.members)
