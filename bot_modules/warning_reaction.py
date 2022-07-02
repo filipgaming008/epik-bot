@@ -9,19 +9,6 @@ class warning_reaction(commands.Cog):
         self.bot = bot
 
 
-
-
-
-
-    # Message sending on an interval
-
-    @tasks.loop(seconds=20)
-    async def printingmessage(self, ctx):
-        channel = self.bot.get_channel(848878286914322435)
-        await channel.send("Hello there!")
-
-    printingmessage.start()
-
     # Getting member ID's on on_ready
 
     @commands.Cog.listener()

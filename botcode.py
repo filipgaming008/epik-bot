@@ -1,7 +1,7 @@
 # imports
 import discord, os, json
 from discord import Embed, Status, Game
-from discord.ext import commands
+from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions
 
 bruh = discord.Intents.default()
@@ -183,6 +183,15 @@ async def help(ctx):
     await ctx.send(embed=embed)
 """
 
+# Message sending on an interval
+
+@tasks.loop(seconds=20)
+async def printingmessage():
+    channel = bot.get_channel(848878286914322435)
+    await channel.send("Hello there!")
+
+
+printingmessage.start()
 
 
 with open("./bot_json_files/token.json", "r") as f:
