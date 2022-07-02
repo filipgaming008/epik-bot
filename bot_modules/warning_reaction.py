@@ -15,12 +15,11 @@ class warning_reaction(commands.Cog):
 
     @tasks.loop(seconds=20)
     async def printingmessage(self):
-        channel = self.bot.get_channel(848878286914322435)
-        await channel.send("Hello there!")
+        print("Hello there!")
 
     @printingmessage.before_loop()
     async def printingmessage_before_loop(self):
-        await self.bot.wait_untill_ready
+        await self.bot.wait_untill_ready()
 
 
     # Getting member ID's on on_ready
