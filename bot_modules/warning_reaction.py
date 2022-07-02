@@ -8,15 +8,14 @@ class warning_reaction(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # Message sending
+    # Getting member ID's on on_ready
 
     @commands.Cog.listener()
     async def on_ready(self):
         guild = self.bot.get_guild(845624418650161172)
         print("Im on it!")
         for Member in guild.members:
-            memberid = Member.id
-            print(memberid)
+            print(Member.id)
 
 
 
