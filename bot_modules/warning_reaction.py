@@ -20,6 +20,6 @@ class warning_reaction(commands.Cog):
 
 
 
-e
+
 def setup(bot):
     bot.add_cog(warning_reaction(bot))
