@@ -18,8 +18,8 @@ class warning_reaction(commands.Cog):
         channel = self.bot.get_channel(848878286914322435)
         await channel.send("Hello there!")
 
-    @printingmessage.loop_before()
-    async def printingmessage_loop_before(self):
+    @printingmessage.before_loop()
+    async def printingmessage_before_loop(self):
         await self.bot.wait_untill_ready
 
 
