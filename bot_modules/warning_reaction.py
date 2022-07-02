@@ -15,8 +15,8 @@ class warning_reaction(commands.Cog):
         guild = self.bot.get_guild(845624418650161172)
         print("Im on it!")
         for Member in guild.members:
-            for Member.id in guild.members:
-                print(Member.id)
+            for discord.user.id in guild.members:
+                print(discord.user.id)
 
 
 
