@@ -15,11 +15,11 @@ class warning_reaction(commands.Cog):
         guild = self.bot.get_guild(845624418650161172)
         print("Im on it!")
         for Member in guild.members:
-            memberid=self.bot.get.member.id
-            print(memberid)
+            for Member.id in guild.members:
+                print(Member.id)
 
 
 
-
+e
 def setup(bot):
     bot.add_cog(warning_reaction(bot))
