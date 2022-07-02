@@ -13,7 +13,7 @@ class warning_reaction(commands.Cog):
 
     @tasks.loop(seconds=20)
     async def printingmessage():
-        channel = bot.get_channel(848878286914322435)
+        channel = self.bot.get_channel(848878286914322435)
         await channel.send("Hello there!")
 
     printingmessage.start()
