@@ -21,7 +21,7 @@ class warning_reaction(commands.Cog):
     @printingmessage.before_loop
     async def before_printingmessage(self):
         print("Waiting.....")
-        await self.bot.wait_untill_ready()
+        await self.bot.wait_until_ready()
 
 
     # Getting member ID's on on_ready
