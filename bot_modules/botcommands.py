@@ -1,3 +1,5 @@
+""""
+
 # imports
 import discord, time
 from discord import Embed
@@ -50,3 +52,4 @@ class botcommands(commands.Cog):
 
 def setup(bot):
     bot.add_cog(botcommands(bot))
+"""

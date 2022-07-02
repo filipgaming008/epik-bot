@@ -1,3 +1,4 @@
+"""
 # imports
 import discord, json
 from discord.ext import commands
@@ -41,3 +42,4 @@ class admincommands(commands.Cog):
 
 def setup(bot):
     bot.add_cog(admincommands(bot))
+"""
