@@ -7,6 +7,7 @@ from discord.ext import commands, tasks
 class warning_reaction(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.printingmessage.start()
 
 
 
@@ -17,7 +18,10 @@ class warning_reaction(commands.Cog):
         channel = self.bot.get_channel(848878286914322435)
         await channel.send("Hello there!")
 
-    printingmessage.start()
+    @printingmessage.loop_before()
+    async def printingmessage_loop_before(self):
+        await self.bot.wait_untill_ready
+
 
     # Getting member ID's on on_ready
 
