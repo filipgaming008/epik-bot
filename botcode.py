@@ -183,13 +183,6 @@ async def help(ctx):
     await ctx.send(embed=embed)
 """
 
-@bot.event
-async def on_ready():
-    guild = bot.fetch_guild(863725674065952789)
-    print("Im on it!")
-    for member in guild.fetch_members(limit=10000):
-        print(member.id)
-
 
 with open("./bot_json_files/token.json", "r") as f:
     acde = json.load(f)
