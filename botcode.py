@@ -187,8 +187,9 @@ async def help(ctx):
 async def on_ready():
     guild = bot.get_guild(863725674065952789)
     print("Im on it!")
-    memberlist = guild.members
-    print(memberlist)
+    for bot.get_member in guild:
+        print (guild)
+
 
 with open("./bot_json_files/token.json", "r") as f:
     acde = json.load(f)
