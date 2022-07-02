@@ -14,9 +14,8 @@ class warning_reaction(commands.Cog):
     async def on_ready(self):
         guild = self.bot.get_guild(845624418650161172)
         print("Im on it!")
-        guildmembers = guild.members
         for Member in guild.members:
-            memberid = guild.fetch_member.id
+            memberid = self.bot.fetch_user.id
             print(memberid)
 
 
