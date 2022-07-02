@@ -20,6 +20,7 @@ class warning_reaction(commands.Cog):
 
     @printingmessage.before_loop
     async def printingmessage_before_loop(self):
+        print("Waiting.....")
         await self.bot.wait_untill_ready()
 
 
