@@ -16,7 +16,7 @@ class warning_reaction(commands.Cog):
         print("Im on it!")
         guildmembers = guild.members
         for Member in guild.members:
-            memberid = guild.fetch_member
+            memberid = guild.fetch_member.id
             print(memberid)
 
 
