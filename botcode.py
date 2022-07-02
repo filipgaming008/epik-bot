@@ -183,20 +183,6 @@ async def help(ctx):
     await ctx.send(embed=embed)
 """
 
-# Message sending on an interval
-
-@tasks.loop(seconds=20)
-async def printingmessage():
-    channel = bot.get_channel(848878286914322435)
-    await channel.send("Hello there!")
-
-@printingmessage.before_loop()
-async def printingmessage_before_loop():
-    await bot.wait_until_ready()
-
-
-printingmessage.start()
-
 
 with open("./bot_json_files/token.json", "r") as f:
     acde = json.load(f)
