@@ -75,9 +75,8 @@ class botevents(commands.Cog):
                 )
                 embed.set_image(url=member.avatar_url)
                 await channel.send(embed=embed)
-
+"""
 
 
 def setup(bot):
     bot.add_cog(botevents(bot))
-"""

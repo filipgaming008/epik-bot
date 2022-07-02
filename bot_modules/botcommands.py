@@ -1,4 +1,4 @@
-""""
+
 
 # imports
 import discord, time
@@ -10,7 +10,7 @@ from discord.ext import commands
 class botcommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
+"""
     # hello command
     @commands.command()
     async def hello(self, ctx):
@@ -47,9 +47,8 @@ class botcommands(commands.Cog):
     async def av_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send("Missing required argument!")
-
+"""
 
 
 def setup(bot):
     bot.add_cog(botcommands(bot))
-"""

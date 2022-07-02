@@ -1,4 +1,3 @@
-"""
 # imports
 import discord, json
 from discord.ext import commands
@@ -10,8 +9,8 @@ class admincommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-
-
+        
+"""
     # say command
     @commands.command()
     @has_permissions(administrator=True)
@@ -37,9 +36,8 @@ class admincommands(commands.Cog):
     async def purge_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You cant do that!")
-
+"""
 
 
 def setup(bot):
     bot.add_cog(admincommands(bot))
-"""
