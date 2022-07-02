@@ -190,6 +190,10 @@ async def printingmessage():
     channel = bot.get_channel(848878286914322435)
     await channel.send("Hello there!")
 
+@printingmessage.before_loop()
+async def printingmessage_before_loop():
+    await bot.wait_until_ready()
+
 
 printingmessage.start()
 
