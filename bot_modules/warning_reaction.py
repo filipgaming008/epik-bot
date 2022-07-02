@@ -17,8 +17,12 @@ class warning_reaction(commands.Cog):
         guild = self.bot.get_guild(845624418650161172)
         print("Im on it!")
         for Member in guild.members:
-            Memberlist.append(Member.id)
-            print(Memberlist)
+            if Member.id == 848878975824035851:
+                pass
+            else:
+                Memberlist.append(Member.id)
+            
+        print(Memberlist)
 
 
 
