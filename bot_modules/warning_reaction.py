@@ -1,5 +1,5 @@
 # imports
-import discord, time
+import discord, time, asyncio
 from discord import Embed
 from discord.ext import commands, tasks
 
@@ -7,26 +7,22 @@ from discord.ext import commands, tasks
 class warning_reaction(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.task = self.bot.loop.create_task(self.printingmessage())
         self.printingmessage.start()
 
 
 
     # Message sending on an interval
 
-    @tasks.loop(seconds=20)
     async def printingmessage(self):
         channel = self.bot.get_channel(848878286914322435)
         await channel.send("Hello there!")
 
-    @printingmessage.before_loop
-    async def before_printingmessage(self):
-        print("Waiting.....")
-        await self.bot.wait_until_ready()
-
+        await asyncio.sleep(20)
     
-    @commands.command
-    async def stopmessaging(self):
-        self.printingmessage.cancel()
+    @commands.command(pass_context=True)
+    async def stopmessaging(self, ctx):
+        self.task.cancel()
 
 
 
