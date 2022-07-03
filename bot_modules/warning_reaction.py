@@ -7,7 +7,7 @@ from discord.ext import commands, tasks
 class warning_reaction(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.task = self.bot.loop.create_task(self.printingmessage(self))
+        self.task = self.bot.loop.create_task(self.printingmessage)
 
 
     # Message sending on an interval
