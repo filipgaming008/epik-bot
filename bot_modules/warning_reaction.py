@@ -20,7 +20,7 @@ class warning_reaction(commands.Cog):
 
         embed = discord.Embed(
             title="Activity check!",
-            description="React with :white_check_mark: or I will do ur mom",
+            description="React with :white_check_mark:"
             color=0xff0000
         )
 
