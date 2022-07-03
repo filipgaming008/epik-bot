@@ -26,15 +26,15 @@ class warning_reaction(commands.Cog):
 
     # Start, stop and cancel
 
-    @commands.command
+    @commands.command()
     async def startmessaging(self):
         self.printingmessage.start()
 
-    @commands.command
+    @commands.command()
     async def stopmessaging(self):
         self.printingmessage.stop()
 
-    @commands.command
+    @commands.command()
     async def cancelmessaging(self):
         self.printingmessage.cancel()
 
