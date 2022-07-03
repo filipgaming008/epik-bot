@@ -19,8 +19,12 @@ class warning_reaction(commands.Cog):
         await asyncio.sleep(20)
     
     @commands.command(pass_context=True)
-    async def stopmessaging(self, ctx):
+    async def stopmessaging(self):
         self.task.cancel()
+
+    @commands.command(pass_context=True)
+    async def startmessaging(self):
+        self.task.start()
 
 
 
