@@ -23,23 +23,28 @@ class warning_reaction(commands.Cog):
         print("Waiting.....")
         await self.bot.wait_until_ready()
 
+    
+    @commands.command
+    async def stopmessaging(self):
+        self.printingmessage.cancel()
 
 
-    # Getting member ID's on on_ready
 
-    @commands.Cog.listener()
-    async def on_ready(self):
-        Memberlist = []
-        Memberlist.clear()
-        guild = self.bot.get_guild(845624418650161172)
-        print("Im on it!")
-        for Member in guild.members:
-            if Member.id == 848878975824035851:
-                pass
-            else:
-                Memberlist.append(Member.id)
+    # # Getting member ID's on on_ready
+
+    # @commands.Cog.listener()
+    # async def on_ready(self):
+    #     Memberlist = []
+    #     Memberlist.clear()
+    #     guild = self.bot.get_guild(845624418650161172)
+    #     print("Im on it!")
+    #     for Member in guild.members:
+    #         if Member.id == 848878975824035851:
+    #             pass
+    #         else:
+    #             Memberlist.append(Member.id)
             
-        print(Memberlist)
+    #     print(Memberlist)
 
 
 

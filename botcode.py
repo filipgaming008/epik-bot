@@ -145,43 +145,43 @@ with open("./bot_json_files/config.json", "r") as f:
                 bot.load_extension(f"bot_modules.{filename[:-3]}")
 
 
-# help command
-"""
-@bot.command()
-async def help(ctx):
-    with open("./bot_json_files/config.json", "r") as f:
-        bean = json.load(f)
-    broj = bean["settings"]["prefix"]
-    embed = Embed(
-        title="\nAvailable commands:\n",
-        description="",
-        color=0xff0000
-    )
-    embed.add_field(
-        name="\nBasic commands:\n",
-        value=(
-            f"{broj}help - brings up this menu"
-            f"\n{broj}ping - pings the bot"
-            f"\n{broj}hello - say hi to the bot"
-            f"\n{broj}av - avatar command"
-        ),
-        inline=False
-    )
-    embed.add_field(
-        name="\nAdmin commands\n",
-        value=(
-            f"{broj}say - make the bot say something"
-            f"\n{broj}purge - purge a said amount of messages"
-            f"\n{broj}load - load a said module"
-            f"\n{broj}unload - unload a said module"
-            f"\n{broj}checkmodules all - check to see what modules are loaded or unloaded"
-            f"\n{broj}checkmodules (cog name goes here) - to specify what module you want to check"
-            f"\n{broj}loadmodules (True/False) - set if u want bot to load all modules on restart or not"
-        ),
-        inline=False
-    )
-    await ctx.send(embed=embed)
-"""
+# # help command
+
+# @bot.command()
+# async def help(ctx):
+#     with open("./bot_json_files/config.json", "r") as f:
+#         bean = json.load(f)
+#     broj = bean["settings"]["prefix"]
+#     embed = Embed(
+#         title="\nAvailable commands:\n",
+#         description="",
+#         color=0xff0000
+#     )
+#     embed.add_field(
+#         name="\nBasic commands:\n",
+#         value=(
+#             f"{broj}help - brings up this menu"
+#             f"\n{broj}ping - pings the bot"
+#             f"\n{broj}hello - say hi to the bot"
+#             f"\n{broj}av - avatar command"
+#         ),
+#         inline=False
+#     )
+#     embed.add_field(
+#         name="\nAdmin commands\n",
+#         value=(
+#             f"{broj}say - make the bot say something"
+#             f"\n{broj}purge - purge a said amount of messages"
+#             f"\n{broj}load - load a said module"
+#             f"\n{broj}unload - unload a said module"
+#             f"\n{broj}checkmodules all - check to see what modules are loaded or unloaded"
+#             f"\n{broj}checkmodules (cog name goes here) - to specify what module you want to check"
+#             f"\n{broj}loadmodules (True/False) - set if u want bot to load all modules on restart or not"
+#         ),
+#         inline=False
+#     )
+#     await ctx.send(embed=embed)
+
 
 
 with open("./bot_json_files/token.json", "r") as f:
