@@ -21,7 +21,7 @@ class botevents(commands.Cog):
         await self.bot.change_presence(
             status=Status.online,
             activity=Game(
-                f"{ea}help"
+                "Loading.. .  .   .    .      .       ."
             )
         )
 
