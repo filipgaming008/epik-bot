@@ -6,25 +6,43 @@ from discord.ext import commands, tasks
 
 class warning_reaction(commands.Cog):
     def __init__(self, bot):
+        self.index = 0
         self.bot = bot
-        self.task = self.bot.loop.create_task(self.printingmessage)
+
+    @tasks.loop(seconds=1, count=5)
+    async def printer(self):
+        print(self.index)
+        self.index += 1
+
+    @printer.before_loop
+    async def before_printer(self):
+        print('waiting...')
+        await self.bot.wait_until_ready()
+
+    @commands.command()
+    async def startall(self, ctx):
+        self.printer.start()
+
+    @commands.command()
+    async def stopall(self, ctx):
+        self.printer.cancel()
 
 
-    # Message sending on an interval
+    # # Message sending on an interval
 
-    async def printingmessage(self):
-        channel = self.bot.get_channel(848878286914322435)
-        await channel.send("Hello there!")
+    # async def printingmessage(self):
+    #     channel = self.bot.get_channel(993132302035062856)
+    #     await channel.send("Hello there!")
 
-        await asyncio.sleep(seconds=20)
+    #     await asyncio.sleep(seconds=20)
     
-    @commands.command(pass_context=True)
-    async def stopprintingmessage(self, ctx):
-        self.task.cancel()
+    # @commands.command(pass_context=True)
+    # async def stopprintingmessage(self, ctx):
+    #     self.task.cancel()
 
-    @commands.command(pass_context=True)
-    async def startprintingmessage(self, ctx):
-        self.task.start()
+    # @commands.command(pass_context=True)
+    # async def startprintingmessage(self, ctx):
+    #     self.task.start()
 
 
 
