@@ -28,15 +28,15 @@ class warning_reaction(commands.Cog):
 
     @commands.command()
     async def startmessaging(self):
-        self.printingmessage.start()
+        self.bot.printingmessage.start()
 
     @commands.command()
     async def stopmessaging(self):
-        self.printingmessage.stop()
+        self.bot.printingmessage.stop()
 
     @commands.command()
     async def cancelmessaging(self):
-        self.printingmessage.cancel()
+        self.bot.printingmessage.cancel()
 
     # Getting member ID's on on_ready
 
