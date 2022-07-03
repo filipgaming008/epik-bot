@@ -7,7 +7,7 @@ from discord.ext import commands, tasks
 class warning_reaction(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.task = self.bot.loop.create_task(self.printingmessage())
+        self.task = self.bot.loop.create_task(self.printingmessage(self))
 
 
     # Message sending on an interval
@@ -16,7 +16,7 @@ class warning_reaction(commands.Cog):
         channel = self.bot.get_channel(848878286914322435)
         await channel.send("Hello there!")
 
-        await asyncio.sleep(20)
+        await asyncio.sleep(seconds=20)
     
     @commands.command(pass_context=True)
     async def stopprintingmessage(self, ctx):
