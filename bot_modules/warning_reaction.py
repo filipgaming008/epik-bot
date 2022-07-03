@@ -24,19 +24,6 @@ class warning_reaction(commands.Cog):
         await self.bot.wait_until_ready()
 
 
-    # Start, stop and cancel
-
-    @commands.command()
-    async def startmessaging(self):
-        self.bot.printingmessage.start()
-
-    @commands.command()
-    async def stopmessaging(self):
-        self.bot.printingmessage.stop()
-
-    @commands.command()
-    async def cancelmessaging(self):
-        self.bot.printingmessage.cancel()
 
     # Getting member ID's on on_ready
 
@@ -53,6 +40,7 @@ class warning_reaction(commands.Cog):
                 Memberlist.append(Member.id)
             
         print(Memberlist)
+
 
 
 def setup(bot):

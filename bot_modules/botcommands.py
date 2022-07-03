@@ -1,5 +1,3 @@
-
-
 # imports
 import discord, time
 from discord import Embed
