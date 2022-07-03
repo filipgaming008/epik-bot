@@ -1,21 +1,19 @@
 # imports
 import discord, os, json
-from discord import Embed, Status, Game
 from discord.ext import commands, tasks
-from discord.ext.commands import has_permissions
 
-bruh = discord.Intents.default()
-bruh.members = True
+bot_intents = discord.Intents.default()
+bot_intents.members = True
 
 # json
 with open("./bot_json_files/config.json", "r") as f:
     data = json.load(f)
 
-pref = data["settings"]["prefix"]
+prefix = data["settings"]["prefix"]
 
 bot = commands.Bot(
-    command_prefix=pref,
-    intents=bruh,
+    command_prefix=prefix,
+    intents=bot_intents,
     help_command=None
 )
 
@@ -25,23 +23,23 @@ bot = commands.Bot(
 
 # prefix change command
 @bot.command(pass_context=True)
-@has_permissions(administrator=True)
-async def prefix_change(ctx, e):
+@commands.has_permissions(administrator=True)
+async def prefix_change(ctx, new_prefix):
     with open("./bot_json_files/config.json", "r") as f:
-        brej = json.load(f)
+        json_config = json.load(f)
 
-    brej["settings"]["prefix"] = e
+    json_config["settings"]["prefix"] = new_prefix
 
     with open("./bot_json_files/config.json", "w") as f:
-        json.dump(brej, f)
+        json.dump(json_config, f)
 
-    await ctx.send(f"Prefix has been changed to {e}")
-    bot.command_prefix = e
+    await ctx.send(f"Prefix has been changed to {new_prefix}")
+    bot.command_prefix = new_prefix
 
     await bot.change_presence(
-        status=Status.online,
-        activity=Game(
-            f"{e}help"
+        status=discord.Status.online,
+        activity=discord.Game(
+            f"{new_prefix}help"
         )
     )
 
@@ -49,7 +47,7 @@ async def prefix_change(ctx, e):
 @prefix_change.error
 async def prefix_change_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("You cant do that!")
+        await ctx.send("You can't do that!")
 
 # check cogs command
 
@@ -58,15 +56,16 @@ async def checkmodules(ctx, module_name):
     if module_name == "all":
         for filename in os.listdir("./bot_modules"):
             if filename.endswith(".py"):
+                filename_no_suffix = filename.removesuffix(".py")
                 try:
-                    bot.load_extension(f"bot_modules.{filename[:-3]}")
+                    bot.load_extension(f"bot_modules.{filename_no_suffix}")
                 except commands.ExtensionAlreadyLoaded:
-                    await ctx.send(f"Module '{filename[:-3]}' is loaded!")
+                    await ctx.send(f"Module '{filename_no_suffix}' is loaded!")
                 except commands.ExtensionNotFound:
-                    await ctx.send(f"Module '{filename[:-3]}' not found!")
+                    await ctx.send(f"Module '{filename_no_suffix}' not found!")
                 else:
-                    await ctx.send(f"Module '{filename[:-3]}' is unloaded!")
-                    bot.unload_extension(f"bot_modules.{filename[:-3]}")
+                    await ctx.send(f"Module '{filename_no_suffix}' is unloaded!")
+                    bot.unload_extension(f"bot_modules.{filename_no_suffix}")
 
     else:
         try:
@@ -87,7 +86,7 @@ async def checkmodules_error(ctx, error):
 
 # load bot_cogs
 @bot.command(pass_context=True)
-@has_permissions(administrator=True)
+@commands.has_permissions(administrator=True)
 async def load(ctx, extension):
     bot.load_extension(f"bot_modules.{extension}")
     await ctx.send(f"{extension} has been loaded!")
@@ -100,7 +99,7 @@ async def load_error(ctx, error):
 
 # unload bot_cogs
 @bot.command(pass_context=True)
-@has_permissions(administrator=True)
+@commands.has_permissions(administrator=True)
 async def unload(ctx, extension):
     bot.unload_extension(f"bot_modules.{extension}")
     await ctx.send(f"{extension} has been unloaded!")
@@ -109,12 +108,12 @@ async def unload(ctx, extension):
 @unload.error
 async def unload_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("You cant do that!")
+        await ctx.send("You can't do that!")
 
 
 # load all Cogs on start command
 @bot.command(pass_context=True)
-@has_permissions(administrator=True)
+@commands.has_permissions(administrator=True)
 async def loadmodules(ctx, a):
     with open("./bot_json_files/config.json", "r") as f:
         aa = json.load(f)
@@ -134,7 +133,7 @@ async def loadmodules(ctx, a):
 @loadmodules.error
 async def loadmodules_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("You cant do that!")
+        await ctx.send("You can't do that!")
 
 with open("./bot_json_files/config.json", "r") as f:
     eee = json.load(f)
@@ -142,7 +141,7 @@ with open("./bot_json_files/config.json", "r") as f:
     if ee == "True":
         for filename in os.listdir("./bot_modules"):
             if filename.endswith(".py"):
-                bot.load_extension(f"bot_modules.{filename[:-3]}")
+                bot.load_extension(f"bot_modules.{filename.removesuffix('.py')}")
 
 
 # # help command
@@ -152,7 +151,7 @@ with open("./bot_json_files/config.json", "r") as f:
 #     with open("./bot_json_files/config.json", "r") as f:
 #         bean = json.load(f)
 #     broj = bean["settings"]["prefix"]
-#     embed = Embed(
+#     embed = discord.Embed(
 #         title="\nAvailable commands:\n",
 #         description="",
 #         color=0xff0000
@@ -185,7 +184,7 @@ with open("./bot_json_files/config.json", "r") as f:
 
 
 with open("./bot_json_files/token.json", "r") as f:
-    acde = json.load(f)
-    token = acde["token"]
+    token_dict = json.load(f)
+    token = token_dict["token"]
 
 bot.run(token)
