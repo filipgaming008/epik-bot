@@ -57,7 +57,7 @@ class warning_reaction(commands.Cog):
         else:
             pass
 
-        await asyncio.sleep(hours=waiting_time_for_reactions_for_grp)
+        await asyncio.sleep(waiting_time_for_reactions_for_grp)
 
         member_list = []
         member_list.clear()
@@ -144,7 +144,7 @@ class warning_reaction(commands.Cog):
         else:
             pass
 
-        await asyncio.sleep(hours=waiting_time_for_reactions_for_atlas)
+        await asyncio.sleep(waiting_time_for_reactions_for_atlas)
 
         member_list = []
         member_list.clear()
