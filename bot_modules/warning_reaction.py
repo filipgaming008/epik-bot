@@ -6,12 +6,12 @@ from discord.ext import commands, tasks
 reactions_channel_id_for_grp = 993132302035062856
 logs_channel_id = 993189664213172225
 time_between_activity_checks_for_grp = 6  # hours
-waiting_time_for_reactions_for_grp = 5.88  # hours
+waiting_time_for_reactions_for_grp = 21168  # seconds
 waiting_time_for_warning_for_grp = 300 # seconds
 
 reactions_channel_id_for_atlas = 996093056094838905
 time_between_activity_checks_for_atlas = 2 # hours
-waiting_time_for_reactions_for_atlas = 1.88 # hours
+waiting_time_for_reactions_for_atlas = 6768 # seconds
 waiting_time_for_warning_for_atlas = 300 # seconds
 
 class warning_reaction(commands.Cog):
