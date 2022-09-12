@@ -3,8 +3,8 @@ import discord, asyncio
 from discord.ext import commands, tasks
 
 
-reactions_channel_id_for_grp = 993132302035062856
-logs_channel_id = 993189664213172225
+reactions_channel_id_for_grp = 993074304470241323
+logs_channel_id = 993074304470241323
 time_between_activity_checks_for_grp = 6  # hours
 waiting_time_for_reactions_for_grp = 21168  # seconds
 waiting_time_for_warning_for_grp = 300 # seconds
@@ -28,7 +28,7 @@ class warning_reaction(commands.Cog):
         reactions_channel = self.bot.get_channel(reactions_channel_id_for_grp)
 
         embed = discord.Embed(
-            title="Advertisment check for GRP!",
+            title="Advertisment time!",
             description="React with :white_check_mark:",
             color=0xff0000
         )
@@ -204,12 +204,12 @@ class warning_reaction(commands.Cog):
     @commands.command()
     async def startall(self, ctx):
         self.printer.start()
-        self.printer2.start()
+        # self.printer2.start()
 
     @commands.command()
     async def stopall(self, ctx):
         self.printer.cancel()
-        self.printer2.cancel()
+        # self.printer2.cancel()
 
 
 
